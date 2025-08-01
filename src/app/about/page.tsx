@@ -36,10 +36,10 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-6 text-center">Our Story</h2>
           <p className="text-lg leading-relaxed text-gray-700">
             Founded in passion and driven by purpose, we started this journey to redefine excellence
-            in the service industry. From humble beginnings, we've grown into a trusted name in
+            in the service industry. From humble beginnings, we&#39;ve grown into a trusted name in
             <span className="font-semibold"> hospitality, catering, travel, and tourism</span>. Our
             team of professionals is committed to making every experience unforgettable — whether
-            it's planning your next adventure, crafting a gourmet dining event, or creating
+            it&#39;s planning your next adventure, crafting a gourmet dining event, or creating
             relaxing stays.
           </p>
 
@@ -118,10 +118,10 @@ export default function AboutPage() {
       {/* Call to Action */}
       <section className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-16 px-6 md:px-20">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Amazing</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Let&#39;s Build Something Amazing</h2>
           <p className="text-lg mb-6">
             Whether you need a world-class catering experience, an unforgettable travel plan, or
-            top-notch hospitality — we’re here to serve.
+            top-notch hospitality — we&#39;re here to serve.
           </p>
           <button className="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
             Contact Us
