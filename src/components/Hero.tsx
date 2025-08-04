@@ -12,7 +12,7 @@ const Hero = () => {
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-  const containerVariants: Variants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -22,9 +22,9 @@ const Hero = () => {
         delayChildren: 0.3,
       },
     },
-  };
+  } satisfies Variants;
 
-  const itemVariants: Variants = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -32,12 +32,12 @@ const Hero = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.4, 0, 0.2, 1] as [number, number, number, number], // ✅ Type assertion
+        ease: [0.4, 0, 0.2, 1],
       },
     },
-  };
+  } satisfies Variants;
 
-  const buttonVariants: Variants = {
+  const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
@@ -57,7 +57,7 @@ const Hero = () => {
     tap: {
       scale: 0.95,
     },
-  };
+  } satisfies Variants;
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -83,7 +83,7 @@ const Hero = () => {
             className="object-cover"
             sizes="100vw"
             onLoad={() => setImageLoaded(true)}
-            onError={() => setImageLoaded(true)} // Fallback in case image fails
+            onError={() => setImageLoaded(true)}
           />
         </motion.div>
       </motion.div>
