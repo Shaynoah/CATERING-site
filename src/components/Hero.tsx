@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import type { Variants } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronDown, Play, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
@@ -22,7 +21,7 @@ const Hero = () => {
         delayChildren: 0.3,
       },
     },
-  } satisfies Variants;
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -35,7 +34,7 @@ const Hero = () => {
         ease: [0.4, 0, 0.2, 1],
       },
     },
-  } satisfies Variants;
+  };
 
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -57,7 +56,7 @@ const Hero = () => {
     tap: {
       scale: 0.95,
     },
-  } satisfies Variants;
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -95,18 +94,18 @@ const Hero = () => {
       >
         <motion.div
           className="max-w-6xl mx-auto text-center px-6 sm:px-8"
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial="hidden"
           animate="visible"
         >
           {/* Decorative Line */}
-          <motion.div variants={itemVariants} className="flex justify-center mb-6">
+          <motion.div variants={itemVariants as any} className="flex justify-center mb-6">
             <div className="w-20 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
           </motion.div>
 
           {/* Heading */}
           <motion.h1
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
             <span className="block">Welcome to</span>
@@ -117,7 +116,7 @@ const Hero = () => {
 
           {/* Subheading */}
           <motion.p
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="text-lg sm:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-100 font-light"
           >
             Your premier destination for{' '}
@@ -128,11 +127,11 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              variants={buttonVariants}
+              variants={buttonVariants as any}
               whileHover="hover"
               whileTap="tap"
               className="group bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold 
@@ -148,7 +147,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.button
-              variants={buttonVariants}
+              variants={buttonVariants as any}
               whileHover="hover"
               whileTap="tap"
               className="group border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold 
@@ -164,7 +163,7 @@ const Hero = () => {
 
           {/* Highlights */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-gray-300"
           >
             <div className="flex items-center gap-2">
