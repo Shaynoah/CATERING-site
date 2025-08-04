@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronDown, Play, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
@@ -11,9 +12,7 @@ const Hero = () => {
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-  const images = ['/images/AMBOELI-1-3.png'];
-
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -25,7 +24,7 @@ const Hero = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -33,26 +32,26 @@ const Hero = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99],
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number], // ✅ Type assertion
       },
     },
   };
 
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
     hover: {
       scale: 1.05,
       transition: {
         duration: 0.2,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       },
     },
     tap: {
@@ -62,38 +61,35 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Enhanced Image Background with Parallax */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y }}
-      >
-        {/* Multi-layered gradient overlay for better readability */}
+      {/* Background Image with Motion */}
+      <motion.div className="absolute inset-0" style={{ y }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-10" />
-        
+
         <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ 
-            scale: imageLoaded ? 1 : 1.1, 
-            opacity: imageLoaded ? 1 : 0 
+          animate={{
+            scale: imageLoaded ? 1 : 1.1,
+            opacity: imageLoaded ? 1 : 0,
           }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
           className="relative w-full h-full"
         >
           <Image
-            src={images[0]}
+            src="/images/AMBOELI-1-3.png"
             alt="Amboseli Landscape - Experience the beauty of Kenya"
             fill
             priority
             className="object-cover"
             sizes="100vw"
             onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(true)} // Fallback in case image fails
           />
         </motion.div>
       </motion.div>
 
-      {/* Enhanced Content with Better Typography */}
-      <motion.div 
+      {/* Foreground Content */}
+      <motion.div
         className="relative z-20 h-full flex items-center justify-center text-white"
         style={{ opacity }}
       >
@@ -103,14 +99,12 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Decorative element */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center mb-6"
-          >
+          {/* Decorative Line */}
+          <motion.div variants={itemVariants} className="flex justify-center mb-6">
             <div className="w-20 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
           </motion.div>
 
+          {/* Heading */}
           <motion.h1
             variants={itemVariants}
             className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
@@ -121,6 +115,7 @@ const Hero = () => {
             </span>
           </motion.h1>
 
+          {/* Subheading */}
           <motion.p
             variants={itemVariants}
             className="text-lg sm:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-100 font-light"
@@ -131,7 +126,7 @@ const Hero = () => {
             <span className="font-medium text-white">hospitality</span> services
           </motion.p>
 
-          {/* Enhanced CTA Buttons */}
+          {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -167,7 +162,7 @@ const Hero = () => {
             </motion.button>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Highlights */}
           <motion.div
             variants={itemVariants}
             className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-gray-300"
@@ -188,7 +183,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Enhanced Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer"
         initial={{ opacity: 0, y: 20 }}
@@ -207,7 +202,7 @@ const Hero = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              repeatType: "reverse",
+              repeatType: 'reverse',
             }}
           >
             <motion.div
@@ -219,7 +214,7 @@ const Hero = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: 'reverse',
               }}
             />
           </motion.div>
@@ -227,7 +222,7 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* Decorative Elements */}
+      {/* Background Decorations */}
       <div className="absolute top-1/4 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-pulse" />
       <div className="absolute bottom-1/4 right-10 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse delay-1000" />
     </div>
